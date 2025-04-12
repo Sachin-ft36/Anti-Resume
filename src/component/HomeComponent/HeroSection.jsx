@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function HeroSection() {
   return (
@@ -26,12 +27,17 @@ function HeroSection() {
         </p>
 
         <div className="flex gap-4" data-aos="fade-up" data-aos-delay="150">
+          <Link to="/assessments">
           <button className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-full shadow-md hover:brightness-110 transition-all duration-300">
             Take Assessment
           </button>
-          <button className="px-6 py-3 border-2 border-pink-400 text-pink-500 font-semibold bg-white rounded-full hover:bg-pink-50 transition-all duration-300">
+          </Link>
+         <Link to="/jobspages">
+         <button className="px-6 py-3 border-2 border-pink-400 text-pink-500 font-semibold bg-white rounded-full hover:bg-pink-50 transition-all duration-300">
             Browse Jobs
           </button>
+         </Link>
+
         </div>
         <div className="mb-10" data-aos="fade-up" data-aos-delay="200">
           <p className="mt-4 mb-6 text-base text-gray-300">

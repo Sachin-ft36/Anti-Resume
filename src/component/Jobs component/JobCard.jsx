@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom"
 
 function JobCard({ job }) {
   const { title, company, location, salary, jobType, skills, postedDays } = job;
@@ -83,9 +84,12 @@ function JobCard({ job }) {
 
       <footer className="flex justify-between items-center pt-4 border-t border-gray-200 text-sm text-gray-500">
         <span>Posted {postedDays} days ago</span>
-        <button className="bg-indigo-600 hover:bg-indigo-700 transition-colors text-white px-5 py-2 rounded-full font-semibold text-sm shadow-sm">
+       <Link to="/apply">
+       <button className="bg-indigo-600 hover:bg-indigo-700 transition-colors text-white px-5 py-2 rounded-full font-semibold text-sm shadow-sm">
           View Job
         </button>
+       </Link>
+
       </footer>
     </article>
   );
