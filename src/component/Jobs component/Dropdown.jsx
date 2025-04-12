@@ -1,17 +1,18 @@
 import React, { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 function Dropdown({
   label,
   options,
   selectedOption,
   onSelect,
-  minWidth = "120px",
+  minWidth = "160px",
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const toggleDropdown = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prev) => !prev);
   };
 
   const handleSelect = (option) => {
@@ -36,44 +37,53 @@ function Dropdown({
   return (
     <div
       ref={dropdownRef}
-      className="box-border flex relative justify-between items-center px-5 py-2.5 m-0 border border-solid cursor-pointer border-zinc-300"
+      className="relative"
       style={{ minWidth }}
-      onClick={toggleDropdown}
     >
-      <div className="box-border p-0 m-0 text-1xl text-black">
-        {selectedOption || label}
-      </div>
-      {isOpen && (
-        <div className="absolute inset-x-0 top-full z-10 mt-1.5 bg-white rounded border border-solid border-zinc-300">
-          {options.map((option, index) => (
-            <div
-              key={index}
-              className="px-5 py-2.5 cursor-pointer hover:bg-gray-100"
-              onClick={(e) => {
-                e.stopPropagation();
-                handleSelect(option);
-              }}
-            >
-              {option}
-            </div>
-          ))}
-        </div>
-      )}
-      <div>
+      <div
+        onClick={toggleDropdown}
+        className="flex justify-between items-center px-4 py-2 border border-gray-300 rounded-lg bg-white cursor-pointer shadow-sm hover:shadow-md transition-shadow duration-200"
+      >
+        <span className="text-gray-800 font-medium">
+          {selectedOption || label}
+        </span>
         <svg
-          width="31"
-          height="31"
-          viewBox="0 0 31 31"
+          className={`w-4 h-4 ml-2 transform transition-transform duration-200 ${
+            isOpen ? "rotate-180" : "rotate-0"
+          }`}
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="dropdown-icon"
+          stroke="currentColor"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
         >
-          <path
-            d="M8.71875 11.625L15.5 18.4062L22.2812 11.625"
-            stroke="black"
-          ></path>
+          <path d="M6 9l6 6 6-6" />
         </svg>
       </div>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -4, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -4, scale: 0.98 }}
+            transition={{ duration: 0.15 }}
+            className="absolute z-10 mt-2 w-full bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden"
+          >
+            {options.map((option, index) => (
+              <div
+                key={index}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleSelect(option);
+                }}
+                className="px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 cursor-pointer transition-colors"
+              >
+                {option}
+              </div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

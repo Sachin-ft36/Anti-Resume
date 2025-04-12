@@ -1,29 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
+
   return (
-    <header className="sticky top-0 z-50 flex justify-between items-center px-10 py-5 h-20 shadow-lg backdrop-blur-md bg-gradient-to-r from-[#0f0c29] via-[#302b63] to-[#24243e] max-md:p-5 text-white overflow-hidden">
-      <div className="relative z-10">
-        <img
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/b8fdbf6bba9645eb364cae948f56ada420c74fd9"
-          className="h-[20px] w-[90px] max-md:h-[38px] max-md:w-[100px] max-sm:h-[34px] max-sm:w-[90px]"
-          alt="SkillMatch"
-        />
+    <header className="sticky top-0 z-[999] flex items-center justify-between px-4 sm:px-6 md:px-10 py-3 sm:py-4 md:py-5 h-20 shadow-lg backdrop-blur-md bg-gradient-to-r from-[#0f0c29] via-[#302b63] to-[#24243e] text-white">
+
+      {/* Logo */}
+      <div className="relative z-20">
+        <h2 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-900">
+          SkillMatch
+        </h2>
       </div>
 
-      <nav className="relative z-10 flex gap-8 max-md:hidden">
-        <NavItem to="/">Home</NavItem>
-        <NavItem to="/jobs">Jobs</NavItem>
-        <NavItem to="/assessments">Assessments</NavItem>
-        <NavItem to="/about">About</NavItem>
+      {/* Hamburger Icon for Mobile */}
+      <button
+        className="z-20 flex items-center justify-center md:hidden text-white"
+        onClick={toggleMenu}
+        aria-label="Toggle navigation menu"
+      >
+        {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+      </button>
+
+      {/* Navigation Links */}
+      <nav
+        className={`fixed md:static top-20 left-0 w-full md:w-auto md:flex md:gap-6 bg-gradient-to-b md:bg-none from-[#0f0c29] via-[#302b63] to-[#24243e] md:backdrop-blur-none backdrop-blur-md transition-all duration-300 ease-in-out ${
+          isMenuOpen ? "flex flex-col items-center gap-4 py-4 z-10" : "hidden md:flex"
+        }`}
+      >
+        <NavItem to="/" closeMenu={closeMenu}>Home</NavItem>
+        <NavItem to="/jobs" closeMenu={closeMenu}>Jobs</NavItem>
+        <NavItem to="/assessments" closeMenu={closeMenu}>Assessments</NavItem>
+        <NavItem to="/salary" closeMenu={closeMenu}>Salary</NavItem>
+        <NavItem to="/feedback" closeMenu={closeMenu}>Feedback</NavItem>
       </nav>
 
-      <div className="relative z-10 flex gap-4">
-        <button className="px-5 py-2 text-base font-medium text-white rounded-lg border-2 border-white hover:bg-white hover:text-[#24243e] transition-all duration-300">
+      {/* Action Buttons */}
+      <div className="hidden md:flex relative z-20 gap-2 sm:gap-3 md:gap-4">
+        <button className="px-2 sm:px-3 py-1 text-xs sm:text-sm font-medium text-white rounded-md border border-white hover:bg-white hover:text-[#24243e] transition-all duration-300">
           Sign In
         </button>
-        <button className="px-5 py-2 text-base font-medium text-white rounded-lg bg-gradient-to-r from-purple-700 to-pink-500 hover:brightness-110 transition-all duration-300">
+        <button className="px-2 sm:px-3 py-1 text-xs sm:text-sm font-medium text-white rounded-md bg-gradient-to-r from-purple-700 to-pink-500 hover:brightness-110 transition-all duration-300">
           Sign Up
         </button>
       </div>
@@ -31,14 +53,15 @@ function Header() {
   );
 }
 
-function NavItem({ to, children }) {
+function NavItem({ to, children, closeMenu }) {
   const location = useLocation();
   const isActive = location.pathname === to;
 
   return (
     <Link
       to={to}
-      className="relative px-3 py-2 text-lg font-medium text-white cursor-pointer group transition-all duration-300"
+      onClick={closeMenu}
+      className="relative px-3 py-1 text-sm font-medium text-white cursor-pointer group transition-all duration-300"
     >
       {children}
       <span

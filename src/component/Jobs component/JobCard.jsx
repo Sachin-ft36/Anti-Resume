@@ -3,7 +3,6 @@ import React from "react";
 function JobCard({ job }) {
   const { title, company, location, salary, jobType, skills, postedDays } = job;
 
-  // Company icon SVG based on company name
   const getCompanyIcon = () => {
     if (company === "TechCorp") {
       return (
@@ -42,96 +41,87 @@ function JobCard({ job }) {
 
   return (
     <article
-      className="box-border p-5 m-0 bg-white rounded border border-solid border-neutral-300"
+      className="transition-transform duration-300 hover:scale-[1.015] hover:shadow-lg shadow-md bg-white border border-gray-200 rounded-xl p-6 flex flex-col justify-between"
       style={{
         boxShadow:
-  "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
-
+          "0 4px 10px rgba(0, 0, 0, 0.05)",
       }}
     >
-      <header className="box-border flex justify-between items-center p-0 m-0 mb-5 max-sm:flex-col max-sm:gap-2.5 max-sm:items-start">
-        <h3 className="box-border p-0 m-0 text-xl font-bold">{title}</h3>
-        <div className="box-border px-4 py-1.5 m-0 text-base bg-indigo-600 rounded text-neutral-100">
-          {jobType}
+      <header className="flex justify-between items-start mb-4">
+        <div>
+          <h3 className="text-xl font-semibold text-slate-800">{title}</h3>
+          <p className="text-sm text-gray-500 mt-1 flex items-center gap-2">
+            {getCompanyIcon()} {company}
+          </p>
         </div>
+        <span className="bg-indigo-100 text-indigo-700 text-sm font-medium px-3 py-1 rounded-full">
+          {jobType}
+        </span>
       </header>
 
-      <div className="box-border flex gap-2.5 items-center p-0 m-0 mb-4 text-base text-slate-500">
-        <div>{getCompanyIcon()}</div>
-        <div className="box-border p-0 m-0">{company}</div>
-      </div>
-
-      <div className="box-border flex gap-2.5 items-center p-0 m-0 mb-4 text-base text-slate-500">
-        <div>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="location-icon"
-          >
-            <path
-              d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM7 9C7 6.24 9.24 4 12 4C14.76 4 17 6.24 17 9C17 11.88 14.12 16.19 12 18.88C9.92 16.21 7 11.85 7 9Z"
-              fill="#5D788C"
-            />
-            <path
-              d="M12 11.5C13.3807 11.5 14.5 10.3807 14.5 9C14.5 7.61929 13.3807 6.5 12 6.5C10.6193 6.5 9.5 7.61929 9.5 9C9.5 10.3807 10.6193 11.5 12 11.5Z"
-              fill="#5D788C"
-            />
-          </svg>
+      <div className="flex flex-col gap-3 text-sm text-slate-600 mb-4">
+        <div className="flex items-center gap-2">
+          <LocationIcon />
+          <span>{location}</span>
         </div>
-        <div className="box-border p-0 m-0">{location}</div>
-      </div>
-
-      <div className="box-border flex gap-2.5 items-center p-0 m-0 mb-4 text-base text-slate-500">
-        <div>
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 18 18"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="salary-icon"
-          >
-            <path
-              d="M14.3438 3.375H3.65625C2.56894 3.375 1.6875 4.25644 1.6875 5.34375V12.6562C1.6875 13.7436 2.56894 14.625 3.65625 14.625H14.3438C15.4311 14.625 16.3125 13.7436 16.3125 12.6562V5.34375C16.3125 4.25644 15.4311 3.375 14.3438 3.375Z"
-              stroke="black"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M1.6875 6.75H16.3125M4.5 10.5469H6.1875V11.25H4.5V10.5469Z"
-              stroke="black"
-              strokeWidth="1.875"
-              strokeLinejoin="round"
-            />
-          </svg>
+        <div className="flex items-center gap-2">
+          <SalaryIcon />
+          <span>{salary}</span>
         </div>
-        <div className="box-border p-0 m-0">{salary}</div>
       </div>
 
-      <div className="box-border flex gap-2.5 p-0 m-0 mb-5 max-sm:flex-wrap">
+      <div className="flex flex-wrap gap-2 mb-6">
         {skills.map((skill, index) => (
-          <div
+          <span
             key={index}
-            className="box-border px-4 py-1.5 m-0 text-sm text-white bg-pink-600 rounded-[100px]"
+            className="text-xs px-3 py-1 rounded-full bg-pink-100 text-pink-700 font-medium"
           >
             {skill}
-          </div>
+          </span>
         ))}
       </div>
 
-      <footer className="box-border flex justify-between items-center p-0 pt-4 m-0 border-t border-solid border-t-stone-300 max-sm:flex-col max-sm:gap-2.5 max-sm:text-center">
-        <div className="box-border p-0 m-0 text-sm text-black">
-          Posted {postedDays} days ago
-        </div>
-        <button className="box-border px-6 py-3 m-0 text-base font-bold bg-indigo-600 rounded cursor-pointer border-[none] text-neutral-100 max-sm:w-full">
+      <footer className="flex justify-between items-center pt-4 border-t border-gray-200 text-sm text-gray-500">
+        <span>Posted {postedDays} days ago</span>
+        <button className="bg-indigo-600 hover:bg-indigo-700 transition-colors text-white px-5 py-2 rounded-full font-semibold text-sm shadow-sm">
           View Job
         </button>
       </footer>
     </article>
   );
 }
+
+const LocationIcon = () => (
+  <svg
+    className="w-4 h-4"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="#5D788C"
+    strokeWidth={2}
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M12 11.5c1.38 0 2.5-1.12 2.5-2.5S13.38 6.5 12 6.5 9.5 7.62 9.5 9s1.12 2.5 2.5 2.5z"
+    />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7z"
+    />
+  </svg>
+);
+
+const SalaryIcon = () => (
+  <svg
+    className="w-4 h-4"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="black"
+    strokeWidth={1.5}
+  >
+    <path d="M3 6h18M3 10h18M3 14h18M3 18h18" />
+  </svg>
+);
 
 export default JobCard;
