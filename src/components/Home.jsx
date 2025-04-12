@@ -1,8 +1,11 @@
 import React from 'react'
+import Companies from './Companies'
 
 function Home() {
   return (
-    <div>Home</div>
+    <div>
+      <Companies/>
+    </div>
   )
 }
 

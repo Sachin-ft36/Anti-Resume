@@ -88,20 +88,24 @@ const ChallengeDetail = () => {
             <div className="bg-gray-50 p-4 rounded-md border mb-6">
               <h3 className="text-lg font-medium mb-2">Challenge Requirements</h3>
               <ul className="list-disc pl-5 space-y-1">
-                <li>Solve the problem efficiently</li>
-                <li>Include comments explaining your approach</li>
-                <li>Ensure your solution handles edge cases</li>
-                <li>Follow best practices for the given programming language or skill area</li>
+                <li>Add a Todo: Users should be able to input a new todo item and add it to the list. Each todo item should have a title and a completion status (completed or not).</li>
+                <li>Display Todos: The application should display a list of todos. Each todo should show its title and whether it is completed</li>
+                <li>Toggle Completion: Users should be able to click on a todo item to toggle its completion status. When a todo is marked as completed, it should be visually distinct (e.g., crossed out).</li>
+                <li>Delete a Todo: Users should be able to remove a todo item from the list.</li>
+                <li>
+                Filter Todos: Provide options to filter the displayed todos based on their completion status (e.g., show all, show completed, show active).
+                </li>
               </ul>
             </div>
             
             <div className="bg-gray-50 p-4 rounded-md border">
               <h3 className="text-lg font-medium mb-2">Evaluation Criteria</h3>
               <ul className="list-disc pl-5 space-y-1">
-                <li>Correctness - Does your solution solve the problem as specified?</li>
-                <li>Efficiency - Is your solution optimized?</li>
-                <li>Readability - Is your code/solution clear and well-organized?</li>
+                <li>Use functional components and React hooks (e.g., useState, useEffect).</li>
+                <li>Efficiency - Is your solution optimized,Ensure the application is responsive and user-friendly.</li>
+                <li>Readability - Is your code/solution clear and well-organized Implement basic styling to enhance the user experience.</li>
                 <li>Best Practices - Do you follow industry standards?</li>
+                <li>Use local state management; no external libraries for state management are required.</li>
               </ul>
             </div>
           </div>

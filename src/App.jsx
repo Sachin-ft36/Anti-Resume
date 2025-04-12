@@ -12,22 +12,47 @@ import ChallengeList from './components/Challenges/ChallengeList';
 import ChallengeDetail from './components/Challenges/ChallengeDetail';
 import Home from './components/Home';
 import './App.css';
+import InterviewScheduler from './components/InterviewScheduler';
+import Jobs from './pages/Jobs';
+import TryChallenge from './components/TryChallenge';
+import Companies from './components/Companies';
+import ApplyJob from './components/ApplyJob';
 
 function App() {
   return (
     <AuthProvider>
       <div className="App">
         <Navbar />
+        
+        
         <main className="container mx-auto py-4 px-2 min-h-screen">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/try-challenge" element={<TryChallenge />} />
+             <Route path="/companies" element={<Companies/>} />
+             <Route path="/apply" element={ <ApplyJob/>} />
             <Route path="/dashboard" element={
               <ProtectedRoute>
                 <Dashboard />
               </ProtectedRoute>
             } />
+
+<Route path="/jobs" element={
+              <ProtectedRoute>
+                <Jobs />
+              </ProtectedRoute>
+            } />
+
+<Route path="/interviewscheduler" element={
+              <ProtectedRoute>
+                <InterviewScheduler/>
+              </ProtectedRoute>
+            } />
+
+
+
             <Route path="/profile" element={
               <ProtectedRoute>
                 <Profile />
@@ -43,6 +68,7 @@ function App() {
                 <ChallengeDetail />
               </ProtectedRoute>
             } />
+            
           </Routes>
         </main>
         <Footer />

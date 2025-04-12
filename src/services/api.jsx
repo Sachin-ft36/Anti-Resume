@@ -9,7 +9,7 @@ const api = axios.create({
   }
 });
 
-// Request interceptor for adding auth token
+
 api.interceptors.request.use((config) => {
   const user = JSON.parse(localStorage.getItem('user'));
   if (user?.token) {
@@ -24,8 +24,8 @@ export const challengeService = {
     return [
       { 
         id: '1', 
-        title: 'Fix this React Component Bug', 
-        description: 'This component has a memory leak. Can you identify and fix it?',
+        title: 'Problem Statement: Build a Dynamic Todo List Application', 
+        description: ' Create a Dynamic Todo List ApplicationYou are tasked with building a simple Todo List application using React. The application should allow users to perform the following actions:',
         difficulty: 'Intermediate',
         timeEstimate: '45 minutes',
         tags: ['React', 'Debugging', 'Hooks']
@@ -65,8 +65,8 @@ export const profileService = {
   getProfile: async () => {
     // Mock data for now
     return {
-      name: 'Demo User',
-      email: 'demo@example.com',
+      name: 'Sandeep',
+      email: 'sandeep@gmail.com',
       completedChallenges: 12,
       skillScores: {
         'JavaScript': 85,
