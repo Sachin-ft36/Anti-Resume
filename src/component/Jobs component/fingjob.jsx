@@ -18,25 +18,25 @@ function HeroSection({ onSearch }) {
   };
 
   return (
-    <header className="box-border px-5 py-10 m-0 bg-gradient-to-br from-[#F9F4FF] via-[#FDF3FB] to-[#F5E8FF] text-black">
+    <header className="px-5 py-16 bg-gradient-to-br from-[#F9F4FF] via-[#FDF3FB] to-[#F5E8FF] text-black">
       <div
-        className="box-border p-0 mx-auto my-0 text-center max-w-[1200px]"
+        className="max-w-5xl mx-auto text-center"
         data-aos="fade-down"
       >
         <h1
-          className="text-4xl font-bold mb-5 max-md:text-5xl max-sm:text-4xl"
+          className="text-5xl font-bold mb-5 max-md:text-4xl"
           data-aos="zoom-in"
           data-aos-delay="200"
         >
-          <span className="p-0 m-0">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
-              Perfect
-            </span>
+          <span className="text-black">Find Your</span>{" "}
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
+            Perfect
           </span>{" "}
           <span>Role</span>
         </h1>
+
         <p
-          className="text-2xl font-medium text-grey-800 mb-10 max-md:text-2xl max-sm:text-xl"
+          className="text-2xl font-medium text-gray-700 mb-10 max-md:text-xl"
           data-aos="fade-up"
           data-aos-delay="400"
         >
@@ -44,38 +44,33 @@ function HeroSection({ onSearch }) {
         </p>
 
         <div
-          className="flex gap-5 justify-center p-0 mx-auto my-0 max-w-[1200px] max-sm:flex-col"
+          className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 justify-center"
           data-aos="fade-up"
           data-aos-delay="600"
         >
-          <div className="flex flex-1 items-center px-5 py-4 bg-white rounded-lg shadow-lg max-w-[800px] max-sm:p-3">
-            <div className="mr-2.5">
-              <svg
-                width="30"
-                height="30"
-                viewBox="0 0 30 30"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="search-icon"
-              >
-                <path
-                  d="M26.25 26.25L20.8213 20.8213..."
-                  stroke="#A7A7A7"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
+          <div className="relative w-full sm:max-w-xl">
+            <svg
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M21 21l-4.35-4.35M11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14z" />
+            </svg>
             <input
               type="text"
               placeholder="Search jobs, skills, or companies"
-              className="p-2 w-full text-lg border-2 border-neutral-300 rounded-lg text-neutral-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full pl-12 pr-4 py-3 text-lg rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
               value={searchTerm}
               onChange={handleSearchChange}
             />
           </div>
+
           <button
-            className="px-7 py-2 text-xl font-bold bg-gradient-to-r from-indigo-600 to-pink-500 rounded-lg text-neutral-100 shadow-lg transition-all duration-300 hover:scale-105 max-sm:w-full"
+            className="px-8 py-3 text-lg font-semibold bg-gradient-to-r from-indigo-600 to-pink-500 text-white rounded-lg shadow-md transition-transform transform hover:scale-105 w-full sm:w-auto"
             onClick={handleSearchSubmit}
           >
             Find Jobs
