@@ -110,7 +110,7 @@ const Jobs = () => {
     setFilteredJobs(filtered);
   };
 
-  const handleApply = (jobId) => {
+  const handleApply = () => {
     navigate(`/apply`);
   };
 

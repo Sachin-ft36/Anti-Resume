@@ -1,6 +1,6 @@
 export const auth = {
     login: async (email, password) => {
-      // Mock login - in a real app this would call an API
+     
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           if (email === 'demo@example.com' && password === 'password') {
@@ -18,7 +18,7 @@ export const auth = {
     },
     
     register: async (userData) => {
-      // Mock register - in a real app this would call an API
+     
       return new Promise((resolve) => {
         setTimeout(() => {
           resolve({
