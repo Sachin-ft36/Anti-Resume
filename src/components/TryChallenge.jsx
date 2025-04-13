@@ -14,7 +14,7 @@ const challengeQuestions = [
       "Use useCallback and useMemo hooks",
       "Implement shouldComponentUpdate",
       "Create more components to distribute state",
-      "All of the above"
+      "All of the Above"
     ],
     correctAnswer: 3
   },
