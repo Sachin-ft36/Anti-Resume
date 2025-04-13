@@ -129,7 +129,7 @@ const TryChallenge = () => {
               className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition"
               onClick={handleStartChallenge}
             >
-              🚀 Start Challenge
+              Start Challenge
             </button>
           </div>
         )}
@@ -164,15 +164,15 @@ const TryChallenge = () => {
                   onClick={handlePrevQuestion}
                   disabled={currentQuestion === 0}
                 >
-                  ⬅️ Previous
+                  Previous
                 </button>
                 <button
                   className="px-5 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
                   onClick={handleNextQuestion}
                 >
                   {currentQuestion === challengeQuestions.length - 1
-                    ? '➡️ Proceed to Coding'
-                    : 'Next ➡️'}
+                    ? ' Proceed to Coding'
+                    : 'Next '}
                 </button>
               </div>
             </div>
@@ -199,7 +199,7 @@ const TryChallenge = () => {
                 className="w-full mt-6 px-6 py-3 bg-green-600 text-white rounded-xl font-medium hover:bg-green-700 shadow-md transition"
                 onClick={handleSubmitChallenge}
               >
-                ✅ Submit Challenge
+                Submit Challenge
               </button>
             </div>
           </div>
@@ -223,7 +223,7 @@ const TryChallenge = () => {
                 setCompleted(false);
               }}
             >
-              🔁 Restart Challenge
+              Restart Challenge
             </button>
           </div>
         )}

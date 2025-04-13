@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function JobCard({
   title,
@@ -50,9 +51,11 @@ function JobCard({
       <div className="flex justify-between items-center mt-4">
         <span className="text-xs text-gray-400">{postedTime}</span>
         <div className="flex gap-2">
+        <Link to="/apply">
           <button className="px-4 py-1 text-sm font-medium bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-full hover:opacity-90 transition">
             Apply Now
           </button>
+          </Link>
           <button className="px-4 py-1 text-sm border border-gray-300 rounded-full hover:bg-gray-100 transition">
             Save
           </button>

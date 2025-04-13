@@ -15,12 +15,13 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import ApplyJob from "./components/ApplyJob";
 import TryChallenge from "./components/TryChallenge";
 import JobsPages from "./pages/JobPages";
+import JobCard  from "./component/HomeComponent/JobCard";
 
 const App = () => {
   useEffect(() => {
     AOS.init({
-      duration: 800, // animation duration
-      once: true, // whether animation should happen only once
+      duration: 800, 
+      once: true, 
     });
 
     // refresh AOS on every route change or re-render
@@ -36,6 +37,7 @@ const App = () => {
           <Route path="jobs" element={<Jobs />} />
           <Route path="jobspages" element={<JobsPages />} />
           <Route path="apply" element={<ApplyJob />} />
+          <Route path="apply" element={<JobCard />} />
           <Route path="salary" element={<Salary />} />
           <Route path="feedback" element={<Feedback />} />
           <Route path="assessments" element={<ChallengeList />} />
