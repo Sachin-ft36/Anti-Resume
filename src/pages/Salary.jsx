@@ -8,6 +8,9 @@ import {
   DollarSign, BookOpen, Heart, Briefcase, TrendingUp, Shield
 } from 'lucide-react';
 
+
+
+  
 export function Salary() {
   const [activeTab, setActiveTab] = useState('salary');
   const [selectedRole, setSelectedRole] = useState('Software Engineer');
@@ -42,12 +45,35 @@ export function Salary() {
     'Marketing Specialist'
   ];
 
+  
   return (
-    <section className="bg-white rounded-xl shadow-lg p-8 max-w-6xl mx-auto">
-      <h2 className="text-3xl font-bold mb-6 text-gray-800 flex items-center">
-        <Briefcase className="mr-3 text-indigo-600" />
-        Transparent Company Data
-      </h2>
+    <>
+    
+    <header className="py-25 bg-gradient-to-br from-[#F9F4FF] via-[#FDF3FB] to-[#F5E8FF] text-black mb-10 text-center overflow-hidden">
+    <div className="max-w-5xl mx-auto px-4"  data-aos="fade-down"> 
+      <h1
+        className="text-5xl font-bold mb-4 max-md:text-4xl"
+        data-aos="zoom-in"
+        data-aos-delay="200"
+      >
+         <span>Transparent </span>{' '}
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
+        Company
+        </span>{' '}
+        <span>Data</span>
+      </h1>
+
+
+      <p
+        className="text-xl pt-5 font-medium text-gray-700 max-md:text-xl"
+        data-aos="fade-up"
+        data-aos-delay="400"
+      >
+        Access verified company insights including salaries, feedback, and role-based expectations — all in one place. Make informed career decisions with complete transparency and grow with confidence.
+      </p>
+    </div>
+  </header>
+    <section className="bg-white rounded-xl shadow-lg p-8 max-w-6xl mx-auto mb-9">
       
       {/* Role Selector */}
       <div className="mb-8 bg-gray-50 p-4 rounded-lg border border-gray-100">
@@ -366,5 +392,6 @@ export function Salary() {
         )}
       </div>
     </section>
+    </>
   );
 }
