@@ -98,29 +98,44 @@ export function Salary() {
       </div>
       
       {/* Tab Navigation */}
-      <div className="flex mb-8 border-b border-gray-200">
-        <button 
-          className={`flex items-center px-6 py-3 font-medium text-sm transition-all ${activeTab === 'salary' ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-gray-500 hover:text-gray-800'}`}
-          onClick={() => setActiveTab('salary')}
-        >
-          <DollarSign className="mr-2 h-4 w-4" />
-          Compensation
-        </button>
-        <button 
-          className={`flex items-center px-6 py-3 font-medium text-sm transition-all ${activeTab === 'culture' ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-gray-500 hover:text-gray-800'}`}
-          onClick={() => setActiveTab('culture')}
-        >
-          <Users className="mr-2 h-4 w-4" />
-          Company Culture
-        </button>
-        <button 
-          className={`flex items-center px-6 py-3 font-medium text-sm transition-all ${activeTab === 'benefits' ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-gray-500 hover:text-gray-800'}`}
-          onClick={() => setActiveTab('benefits')}
-        >
-          <Heart className="mr-2 h-4 w-4" />
-          Benefits
-        </button>
-      </div>
+      <div className="flex flex-col sm:flex-row mb-8 border-b border-gray-200 overflow-x-auto scrollbar-hide">
+  <button 
+    className={`flex items-center px-6 py-3 font-medium text-sm whitespace-nowrap transition-all ${
+      activeTab === 'salary'
+        ? 'text-indigo-600 border-b-2 border-indigo-600'
+        : 'text-gray-500 hover:text-gray-800'
+    }`}
+    onClick={() => setActiveTab('salary')}
+  >
+    <DollarSign className="mr-2 h-4 w-4" />
+    Compensation
+  </button>
+  
+  <button 
+    className={`flex items-center px-6 py-3 font-medium text-sm whitespace-nowrap transition-all ${
+      activeTab === 'culture'
+        ? 'text-indigo-600 border-b-2 border-indigo-600'
+        : 'text-gray-500 hover:text-gray-800'
+    }`}
+    onClick={() => setActiveTab('culture')}
+  >
+    <Users className="mr-2 h-4 w-4" />
+    Company Culture
+  </button>
+  
+  <button 
+    className={`flex items-center px-6 py-3 font-medium text-sm whitespace-nowrap transition-all ${
+      activeTab === 'benefits'
+        ? 'text-indigo-600 border-b-2 border-indigo-600'
+        : 'text-gray-500 hover:text-gray-800'
+    }`}
+    onClick={() => setActiveTab('benefits')}
+  >
+    <Heart className="mr-2 h-4 w-4" />
+    Benefits
+  </button>
+</div>
+
       
       {/* Tab Content */}
       <div className="min-h-64">
