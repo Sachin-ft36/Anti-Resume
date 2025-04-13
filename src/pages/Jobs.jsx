@@ -11,8 +11,8 @@ function JobSearch() {
   const [sortOrder, setSortOrder] = useState("newest");
 
   const jobTypes = ["Full-time", "Contract", "Part-time"];
-  const locations = ["Remote", "New York, NY", "San Francisco, CA"];
-  const skills = ["React", "TypeScript", "Figma", "User Research", "Python"];
+  const locations = ["Remote", "New York, NY", "San Francisco, CA", "Los Angeles, CA", "Chicago, IL", "Austin, TX"];
+  const skills = ["React", "TypeScript", "Figma", "User Research", "Python", "Node.js", "Express", "MongoDB", "Java"];
 
   const handleSearch = (term) => {
     setSearchTerm(term);

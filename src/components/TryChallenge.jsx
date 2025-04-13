@@ -1,5 +1,9 @@
 import { useState } from "react";
-import { CheckCircle, Clock, Code, PenTool, Briefcase, Check, ArrowRight, FileText } from "lucide-react";
+import {
+  CheckCircle,
+  Clock,
+  PenTool
+} from "lucide-react";
 
 const challengeQuestions = [
   {
@@ -10,7 +14,7 @@ const challengeQuestions = [
       "Use useCallback and useMemo hooks",
       "Implement shouldComponentUpdate",
       "Create more components to distribute state",
-      "All of the above"
+      "All of the Above"
     ],
     correctAnswer: 3
   },
@@ -103,101 +107,127 @@ const TryChallenge = () => {
   const progressPercentage = (currentStep / totalSteps) * 100;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <div className="mb-6">
-        <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+    <div className=" bg-white dark:bg-gray-900 flex flex-col items-center justify-start pb-29">
+      
+      <div className="w-full  left-0 px-6 py-4 z-50 bg-white dark:bg-gray-900">
+        <div className="w-full bg-gray-300 rounded-full h-3 dark:bg-gray-700">
           <div
-            className="bg-blue-600 h-2.5 rounded-full"
+            className="bg-gradient-to-r from-blue-500 to-green-400 h-3 rounded-full transition-all duration-500"
             style={{ width: `${progressPercentage}%` }}
           ></div>
         </div>
       </div>
-
-      {activeTab === "info" && (
-        <div className="text-center">
-          <h2 className="text-2xl font-bold mb-4">Try a Mock Challenge</h2>
-          <p className="mb-6 text-gray-600">Test your skills in a real interview-like environment.</p>
-          <button
-            className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-            onClick={handleStartChallenge}
-          >
-            Start Challenge
-          </button>
-        </div>
-      )}
-
-      {activeTab === "questions" && (
-        <div className="space-y-6">
-          <div>
-            <h3 className="text-lg font-semibold mb-2">{challengeQuestions[currentQuestion].question}</h3>
-            <ul className="space-y-2">
-              {challengeQuestions[currentQuestion].options.map((option, index) => (
-                <li key={index}>
-                  <button
-                    onClick={() => handleSelectAnswer(currentQuestion, index)}
-                    className={`w-full text-left px-4 py-2 rounded border ${selectedAnswers[currentQuestion] === index ? 'bg-blue-100 border-blue-600' : 'border-gray-300'} hover:bg-blue-50`}
-                  >
-                    {option}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="flex justify-between mt-6">
+      <div className="pt-12 flex flex-col items-center justify-center">
+    
+        {activeTab === "info" && (
+          <div className="flex flex-col justify-center items-center text-center py-20 px-6 space-y-6">
+            <h2 className="text-4xl font-extrabold text-gray-800 dark:text-white">🎯 Ready to Push Your Limits?</h2>
+            <p className="text-gray-600 dark:text-gray-300 text-xl">
+              Experience a mock interview challenge and see how well you perform under pressure.
+            </p>
             <button
-              className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
-              onClick={handlePrevQuestion}
-              disabled={currentQuestion === 0}
+              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition"
+              onClick={handleStartChallenge}
             >
-              Previous
-            </button>
-            <button
-              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-              onClick={handleNextQuestion}
-            >
-              {currentQuestion === challengeQuestions.length - 1 ? 'Proceed to Coding Task' : 'Next'}
+              🚀 Start Challenge
             </button>
           </div>
-        </div>
-      )}
+        )}
 
-      {activeTab === "coding" && (
-        <div className="space-y-4">
-          <h3 className="text-xl font-bold mb-4">Coding Tasks</h3>
-          {codingTasks.map(task => (
-            <div key={task.id} className="border p-4 rounded-md shadow">
-              <h4 className="text-lg font-semibold">{task.title}</h4>
-              <p className="text-gray-600">{task.description}</p>
-              <div className="flex items-center text-sm text-gray-500 mt-2">
-                <Clock className="w-4 h-4 mr-1" /> {task.timeEstimate}
-                <span className="mx-2">•</span>
-                <PenTool className="w-4 h-4 mr-1" /> {task.difficulty}
+
+        {activeTab === "questions" && (
+          <div className="flex flex-col justify-center items-center px-6 w-full">
+            <div className="w-full max-w-2xl space-y-6">
+              <h3 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4">
+                {challengeQuestions[currentQuestion].question}
+              </h3>
+              <ul className="space-y-3">
+                {challengeQuestions[currentQuestion].options.map((option, index) => (
+                  <li key={index}>
+                    <button
+                      onClick={() => handleSelectAnswer(currentQuestion, index)}
+                      className={`w-full text-left px-5 py-3 rounded-xl border transition duration-300 font-medium ${
+                        selectedAnswers[currentQuestion] === index
+                          ? 'bg-blue-100 border-blue-600 text-blue-700'
+                          : 'border-gray-300 text-gray-700 dark:text-gray-300'
+                      } hover:bg-blue-50 dark:hover:bg-gray-800`}
+                    >
+                      {option}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="flex justify-between mt-6">
+                <button
+                  className="px-5 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400"
+                  onClick={handlePrevQuestion}
+                  disabled={currentQuestion === 0}
+                >
+                  ⬅️ Previous
+                </button>
+                <button
+                  className="px-5 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                  onClick={handleNextQuestion}
+                >
+                  {currentQuestion === challengeQuestions.length - 1
+                    ? '➡️ Proceed to Coding'
+                    : 'Next ➡️'}
+                </button>
               </div>
             </div>
-          ))}
-          <button
-            className="mt-4 px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700"
-            onClick={handleSubmitChallenge}
-          >
-            Submit Challenge
-          </button>
-        </div>
-      )}
+          </div>
+        )}
 
-      {activeTab === "results" && completed && (
-        <div className="text-center">
-          <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
-          <h3 className="text-2xl font-bold mb-2">Challenge Completed!</h3>
-          <p className="text-gray-600 mb-4">You’ve successfully completed the challenge. Great work!</p>
-          <button
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-            onClick={() => setActiveTab("info")}
-          >
-            Restart Challenge
-          </button>
-        </div>
-      )}
+        {/* Coding Tab */}
+        {activeTab === "coding" && (
+          <div className="flex flex-col justify-center items-center px-6 w-full space-y-6">
+            <div className="w-full max-w-2xl">
+              <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">💻 Coding Tasks</h3>
+              {codingTasks.map(task => (
+                <div key={task.id} className="border border-gray-200 dark:border-gray-600 p-5 rounded-lg bg-gray-50 dark:bg-gray-800 mb-4">
+                  <h4 className="text-xl font-semibold text-gray-900 dark:text-white">{task.title}</h4>
+                  <p className="text-gray-700 dark:text-gray-300 mt-1">{task.description}</p>
+                  <div className="flex items-center text-sm text-gray-600 dark:text-gray-400 mt-3">
+                    <Clock className="w-4 h-4 mr-2" /> {task.timeEstimate}
+                    <span className="mx-3">•</span>
+                    <PenTool className="w-4 h-4 mr-2" /> {task.difficulty}
+                  </div>
+                </div>
+              ))}
+              <button
+                className="w-full mt-6 px-6 py-3 bg-green-600 text-white rounded-xl font-medium hover:bg-green-700 shadow-md transition"
+                onClick={handleSubmitChallenge}
+              >
+                ✅ Submit Challenge
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Results Tab */}
+        {activeTab === "results" && completed && (
+          <div className="flex flex-col justify-center items-center text-center space-y-4 px-6 py-20">
+            <CheckCircle className="w-14 h-14 text-green-500 mx-auto" />
+            <h3 className="text-3xl font-bold text-gray-800 dark:text-white">🎉 Challenge Completed!</h3>
+            <p className="text-gray-600 dark:text-gray-300">
+              You’ve successfully completed the challenge. Great work!
+            </p>
+            <button
+              className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg shadow hover:shadow-lg"
+              onClick={() => {
+                setActiveTab("info");
+                setCurrentQuestion(0);
+                setSelectedAnswers([]);
+                setStarted(false);
+                setCompleted(false);
+              }}
+            >
+              🔁 Restart Challenge
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
